@@ -1,4 +1,35 @@
-<div>
-  <button class="btn btn-danger">This is a bootstrap</button>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <form [formGroup]="signupForm">
+        <div class="form-group">
+          <label for="userInput">Username</label>
+          <input type="text"
+           id="username"
+           formControlName="username"
+           class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="email">email</label>
+          <input type="text"
+          id="email"
+          formControlName="email"
+          class="form-control">
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input type="radio"
+            formControlName="gender"
+            [value]="gender" > {{gender}}
+            >
+          </label>
+        </div>
+        <div>
+         <button class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
+
 <router-outlet></router-outlet>
