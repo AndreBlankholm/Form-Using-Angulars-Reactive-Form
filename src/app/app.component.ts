@@ -12,7 +12,9 @@ export class AppComponent implements OnInit {
 
   genders = ['Male', 'Female'];
 
-  signupForm!: FormGroup;
+  signupForm!: FormGroup
+  
+
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -31,10 +33,17 @@ export class AppComponent implements OnInit {
   }
 
   onAddHobby(){
-    const control = new FormControl(null, Validators.required);
-    console.log("Clicked");
-    (<FormArray>this.signupForm.get('hobbies')).push(control);
-  }
+    
+    const controls = new FormControl(null, [Validators.required]);
 
+   
+    (<FormArray>this.signupForm.get('hobbies')).push(controls);
+    
+    console.log(this.signupForm.get('hobbies'));
+    console.log("Clicked");
+  }
+  getControls() {
+    return (<FormArray>this.signupForm.get('hobbies')).controls;
+  }
 
 }
